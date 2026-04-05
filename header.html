@@ -1,0 +1,133 @@
+<!-- ══════════════════════════════════════════════
+   header.html  –  Diresk Consultation & Guidance
+   Include on every page via JavaScript (see index.html)
+   ══════════════════════════════════════════════ -->
+
+<style>
+/* ── CSS variables (copy these to your main stylesheet if not already there) ── */
+:root {
+  --g:   #1A5C35;
+  --gm:  #22733F;
+  --gl:  #2E8F50;
+  --gp:  #EBF5EF;
+  --gs:  #C8E6D4;
+  --w:   #FFFFFF;
+  --bd:  #E4ECE8;
+  --t:   #192B20;
+  --tm:  #4A5E52;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  background: var(--w); border-bottom: 1px solid var(--bd);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 4%; height: 70px;
+  box-shadow: 0 1px 16px rgba(26,92,53,.05);
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo img { width: 52px; height: 52px; border-radius: 10px; object-fit: contain; }
+.logo-text { font-size: 1rem; font-weight: 700; color: var(--g); letter-spacing: -.01em; }
+.logo-text span { color: var(--tm); font-weight: 400; font-size: .9rem; }
+
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  color: var(--tm); text-decoration: none; font-size: .83rem; font-weight: 500;
+  padding: .25rem 0; border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.nav-links a:hover { color: var(--g); border-bottom-color: var(--g); }
+.nav-links a.active { color: var(--g); border-bottom-color: var(--g); }
+
+.nav-cta {
+  background: var(--g); color: var(--w);
+  padding: .5rem 1.3rem; border-radius: 8px;
+  font-size: .82rem; font-weight: 600; text-decoration: none;
+  transition: background .2s, transform .15s; white-space: nowrap;
+}
+.nav-cta:hover { background: var(--gm); transform: translateY(-1px); }
+
+/* ── Hamburger ── */
+.ham {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 6px; z-index: 200;
+}
+.ham span {
+  display: block; width: 24px; height: 2px;
+  background: var(--g); border-radius: 2px; transition: .3s;
+}
+
+/* ── Mobile menu ── */
+.mobile-menu {
+  display: none; position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,.98); z-index: 199;
+  flex-direction: column; align-items: center;
+  justify-content: center; gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 1.3rem; color: var(--g); font-weight: 600; text-decoration: none; }
+.mobile-menu .mob-cta {
+  background: var(--g); color: #fff !important;
+  padding: .85rem 2rem; border-radius: 50px; margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  nav { padding: .9rem 4%; position: relative; }
+  .nav-links, .nav-cta { display: none; }
+  .logo-text { font-size: .95rem; }
+  .ham { display: flex; }
+}
+</style>
+
+<!-- ── Main navigation ── -->
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <!-- Replace logo.png with your actual logo file path -->
+    <img src="logo.png" alt="Diresk">
+    <div class="logo-text">Diresk <span>Consultation &amp; Guidance</span></div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="registration.html">Registration</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+
+  <a href="registration.html" class="nav-cta">Book a session</a>
+
+  <div class="ham" onclick="toggleMenu()" id="ham">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── Mobile slide-in menu ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="ham" onclick="toggleMenu()" style="position:absolute;top:1.2rem;right:4%">
+    <span style="transform:rotate(45deg) translate(5px,5px)"></span>
+    <span style="opacity:0"></span>
+    <span style="transform:rotate(-45deg) translate(5px,-5px)"></span>
+  </div>
+  <a href="about.html"        onclick="toggleMenu()">About</a>
+  <a href="blog.html"         onclick="toggleMenu()">Blog</a>
+  <a href="registration.html" onclick="toggleMenu()">Registration</a>
+  <a href="contact.html"      onclick="toggleMenu()">Contact</a>
+  <a href="faq.html"          onclick="toggleMenu()">FAQ</a>
+  <a href="registration.html" onclick="toggleMenu()" class="mob-cta">Book a session</a>
+</div>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+/* Highlight the active nav link based on current page */
+(function () {
+  const links = document.querySelectorAll('.nav-links a, .mobile-menu a');
+  links.forEach(function (a) {
+    if (a.href === window.location.href) a.classList.add('active');
+  });
+})();
+</script>
