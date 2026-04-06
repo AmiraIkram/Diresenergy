@@ -1,0 +1,205 @@
+<!-- ══════════════════════════════════════════════
+   footer.html  –  Diresk Consultation & Guidance
+   Include on every page via JavaScript (see index.html)
+   ══════════════════════════════════════════════ -->
+
+<style>
+/* ── CSS variables (copy to main stylesheet if not already present) ── */
+:root {
+  --g:   #1A5C35;
+  --w:   #FFFFFF;
+  --tm:  #4A5E52;
+}
+
+/* ── Footer ── */
+footer {
+  background: #111D15;
+  padding: 4rem 4% 2rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ft-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3.5rem;
+  margin-bottom: 2.8rem;
+}
+
+/* Brand column */
+.ft-brand { display: flex; align-items: center; gap: 9px; margin-bottom: .9rem; }
+.ft-brand img {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.12);
+}
+.ft-bname { font-size: .95rem; font-weight: 700; color: #fff; }
+.ft-bname span { color: rgba(255,255,255,.4); font-weight: 400; }
+
+.ft-desc {
+  font-size: .8rem; color: rgba(255,255,255,.4);
+  line-height: 1.7; max-width: 250px; margin-bottom: .9rem;
+}
+.ft-desc-ar {
+  font-family: 'Amiri', serif;
+  font-size: .88rem; color: rgba(255,255,255,.3);
+  direction: rtl; text-align: right;
+  line-height: 1.9; max-width: 250px; margin-bottom: .9rem;
+}
+
+/* Social icons */
+.ft-soc { display: flex; gap: .6rem; }
+.fsoc {
+  width: 30px; height: 30px; border-radius: 7px;
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: rgba(255,255,255,.4);
+  text-decoration: none; transition: border-color .2s, color .2s;
+}
+.fsoc:hover { border-color: rgba(255,255,255,.4); color: #fff; }
+
+/* Link columns */
+.ft-col h5 {
+  font-size: .67rem; font-weight: 700; letter-spacing: .15em;
+  text-transform: uppercase; color: rgba(255,255,255,.28);
+  margin-bottom: .95rem;
+}
+.ft-col a {
+  display: block; color: rgba(255,255,255,.45);
+  text-decoration: none; font-size: .81rem;
+  margin-bottom: .55rem; transition: color .2s;
+}
+.ft-col a:hover { color: #fff; }
+
+/* Bottom bar */
+.ft-bottom {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(255,255,255,.07);
+  font-size: .73rem; color: rgba(255,255,255,.22);
+}
+.ft-bottom a { color: inherit; text-decoration: none; }
+.ft-bottom a:hover { color: rgba(255,255,255,.55); }
+
+/* Responsive */
+@media (max-width: 1060px) {
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 768px) {
+  .ft-grid { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
+  .ft-brand { justify-content: center; }
+  .ft-soc { justify-content: center; }
+  .ft-desc, .ft-desc-ar { max-width: 100%; }
+}
+</style>
+
+<style>
+/* ── WhatsApp floating button ── */
+.wa-float {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  z-index: 9999;
+  display: flex; align-items: center; gap: .55rem;
+  background: #25D366; color: #fff;
+  text-decoration: none; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .82rem; font-weight: 700;
+  padding: .65rem 1.1rem .65rem .85rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 18px rgba(37,211,102,.45);
+  transition: background .2s, transform .15s, box-shadow .2s;
+  white-space: nowrap;
+}
+.wa-float:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(37,211,102,.55);
+}
+.wa-float svg {
+  width: 22px; height: 22px; flex-shrink: 0;
+}
+@media (max-width: 480px) {
+  .wa-float { padding: .7rem; border-radius: 50%; }
+  .wa-float .wa-label { display: none; }
+}
+</style>
+
+<!-- ── WhatsApp floating button ── -->
+<a href="https://wa.me/213671538177" target="_blank" rel="noopener" class="wa-float" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M16 3C8.82 3 3 8.82 3 16c0 2.3.6 4.47 1.65 6.35L3 29l6.82-1.62A13 13 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3Z" fill="#fff" fill-opacity=".2"/>
+    <path d="M16 4.5C9.65 4.5 4.5 9.65 4.5 16c0 2.18.58 4.22 1.6 5.97L4.5 27.5l5.7-1.57A11.46 11.46 0 0 0 16 27.5c6.35 0 11.5-5.15 11.5-11.5S22.35 4.5 16 4.5Z" fill="#fff"/>
+    <path d="M21.92 19.1c-.28-.14-1.66-.82-1.92-.91-.26-.1-.44-.14-.63.14-.18.28-.72.91-.88 1.1-.16.18-.33.2-.6.07-.28-.14-1.18-.43-2.24-1.38-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.17.18-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.63-1.52-.87-2.08-.23-.54-.46-.47-.63-.48H13c-.17 0-.45.06-.69.33-.24.26-.9.88-.9 2.15 0 1.26.92 2.48 1.05 2.65.14.18 1.8 2.75 4.37 3.86.61.26 1.09.42 1.46.54.61.19 1.17.16 1.61.1.49-.08 1.51-.62 1.72-1.21.21-.6.21-1.11.15-1.22-.07-.1-.25-.17-.53-.3Z" fill="#25D366"/>
+  </svg>
+  <span class="wa-label">Chat with us</span>
+</a>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="ft-grid">
+
+    <!-- Brand + description + social -->
+    <div>
+      <div class="ft-brand">
+        <img src="logo.png" alt="Diresk">
+        <div class="ft-bname">Diresk <span>Consultation &amp; Guidance</span></div>
+      </div>
+      <p class="ft-desc">
+        Professional consultations and technical guidance in electrical engineering and renewable energies.
+      </p>
+      <p class="ft-desc-ar">
+        استشارات هندسية في الطاقة الشمسية والطاقة المتجددة
+      </p>
+      <div class="ft-soc">
+        <a href="https://www.facebook.com/profile.php?id=100083038487065" target="_blank" class="fsoc" title="Facebook">f</a>
+        <a href="https://www.linkedin.com/company/86228753/"              target="_blank" class="fsoc" title="LinkedIn">in</a>
+        <a href="https://www.instagram.com/diresk_online_school/"         target="_blank" class="fsoc" title="Instagram">ig</a>
+        <a href="https://www.tiktok.com/@diresk_online_school"            target="_blank" class="fsoc" title="TikTok">tt</a>
+        <a href="mailto:ourradamira@gmail.com"                                             class="fsoc" title="Email">✉</a>
+        <a href="https://wa.me/213671538177"                              target="_blank" class="fsoc" title="WhatsApp">📱</a>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="ft-col">
+      <h5>Navigation</h5>
+      <a href="https://www.direskenergy.com/#about">About</a>
+      <a href="https://www.direskenergy.com/blog.html">Blog</a>
+      <a href="https://www.direskenergy.com/#register">Registration</a>
+      <a href="https://www.direskenergy.com/#contact">Contact</a>
+      <a href="https://www.direskenergy.com/#faq">FAQ</a>
+    </div>
+
+    <!-- Prices -->
+    <div class="ft-col">
+      <h5>Prices</h5>
+      <a href="https://www.direskenergy.com/#register">Quick Session (1 000 DA)</a>
+      <a href="https://www.direskenergy.com/#register">Consultation (2 000 DA)</a>
+      <a href="https://www.direskenergy.com/#register">In-depth Session (4 000 DA)</a>
+      <a href="https://www.direskenergy.com/#register">FYP Review (9 000 DA)</a>
+      <a href="https://www.direskenergy.com/#register">Career Package (9 000 DA)</a>
+      <a href="https://www.direskenergy.com/#register">Remote Solar Audit (9 000 DA)</a>
+      <a href="https://www.direskenergy.com/#register">Technical Visit &amp; Maintenance</a>
+      <a href="https://www.direskenergy.com/#register">Solar Installation ☀️</a>
+      <a href="https://www.direskenergy.com/#register">Electrical Installation ⚡</a>
+    </div>
+
+    <!-- Contact -->
+    <div class="ft-col">
+      <h5>Contact</h5>
+      <a href="mailto:ourradamira@gmail.com">amira@direskenergy.com</a>
+      <a href="https://wa.me/213671538177"                              target="_blank">WhatsApp: 0671 53 81 77</a>
+      <a href="https://www.facebook.com/profile.php?id=100083038487065" target="_blank">Facebook</a>
+      <a href="https://www.linkedin.com/company/86228753/"              target="_blank">LinkedIn</a>
+      <a href="https://www.instagram.com/diresk_online_school/"         target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@diresk_online_school"            target="_blank">TikTok</a>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="ft-bottom">
+    <span>© 2025 Diresk Consultation &amp; Guidance. All rights reserved.</span>
+    <div style="display:flex;gap:1.2rem">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>

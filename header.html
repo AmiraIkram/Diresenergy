@@ -1,0 +1,278 @@
+<!-- ══════════════════════════════════════════════
+   header.html  –  Diresk Consultation & Guidance
+   Include on every page via JavaScript (see index.html)
+   ══════════════════════════════════════════════ -->
+
+<style>
+/* ── CSS variables (copy these to your main stylesheet if not already there) ── */
+:root {
+  --g:   #1A5C35;
+  --gm:  #22733F;
+  --gl:  #2E8F50;
+  --gp:  #EBF5EF;
+  --gs:  #C8E6D4;
+  --w:   #FFFFFF;
+  --bd:  #E4ECE8;
+  --t:   #192B20;
+  --tm:  #4A5E52;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  background: var(--w); border-bottom: 1px solid var(--bd);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 4%; height: 70px;
+  box-shadow: 0 1px 16px rgba(26,92,53,.05);
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo img { width: 52px; height: 52px; border-radius: 10px; object-fit: contain; }
+.logo-text { font-size: 1rem; font-weight: 700; color: var(--g); letter-spacing: -.01em; }
+.logo-text span { color: var(--tm); font-weight: 400; font-size: .9rem; }
+
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  color: var(--tm); text-decoration: none; font-size: .83rem; font-weight: 500;
+  padding: .25rem 0; border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.nav-links a:hover { color: var(--g); border-bottom-color: var(--g); }
+.nav-links a.active { color: var(--g); border-bottom-color: var(--g); }
+
+.nav-cta {
+  background: var(--g); color: var(--w);
+  padding: .5rem 1.3rem; border-radius: 8px;
+  font-size: .82rem; font-weight: 600; text-decoration: none;
+  transition: background .2s, transform .15s; white-space: nowrap;
+}
+.nav-cta:hover { background: var(--gm); transform: translateY(-1px); }
+
+/* ── Language switcher ── */
+.lang-switcher {
+  position: relative; display: flex; align-items: center;
+}
+.lang-btn {
+  display: flex; align-items: center; gap: .35rem;
+  background: transparent; border: 1.5px solid var(--bd);
+  border-radius: 7px; padding: .35rem .7rem;
+  font-size: .78rem; font-weight: 600; color: var(--tm);
+  cursor: pointer; transition: border-color .2s, color .2s;
+  font-family: inherit;
+}
+.lang-btn:hover { border-color: var(--g); color: var(--g); }
+.lang-btn svg { width: 13px; height: 13px; transition: transform .2s; }
+.lang-switcher.open .lang-btn svg { transform: rotate(180deg); }
+.lang-dropdown {
+  display: none; position: absolute; top: calc(100% + 6px); right: 0;
+  background: var(--w); border: 1px solid var(--bd);
+  border-radius: 9px; overflow: hidden;
+  box-shadow: 0 6px 24px rgba(26,92,53,.10);
+  min-width: 120px; z-index: 600;
+}
+.lang-switcher.open .lang-dropdown { display: block; }
+.lang-dropdown button {
+  display: flex; align-items: center; gap: .5rem;
+  width: 100%; padding: .55rem 1rem;
+  background: none; border: none; cursor: pointer;
+  font-size: .8rem; font-weight: 500; color: var(--tm);
+  font-family: inherit; text-align: left; transition: background .15s, color .15s;
+}
+.lang-dropdown button:hover { background: var(--gp); color: var(--g); }
+.lang-dropdown button.selected { color: var(--g); font-weight: 700; background: var(--gp); }
+.lang-flag { font-size: .95rem; }
+
+/* ── Nav right group (CTA + lang) ── */
+.nav-right { display: flex; align-items: center; gap: .75rem; }
+
+/* ── Hamburger ── */
+.ham {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 6px; z-index: 200;
+}
+.ham span {
+  display: block; width: 24px; height: 2px;
+  background: var(--g); border-radius: 2px; transition: .3s;
+}
+
+/* ── Mobile menu ── */
+.mobile-menu {
+  display: none; position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,.98); z-index: 199;
+  flex-direction: column; align-items: center;
+  justify-content: center; gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 1.3rem; color: var(--g); font-weight: 600; text-decoration: none; }
+.mobile-menu .mob-cta {
+  background: var(--g); color: #fff !important;
+  padding: .85rem 2rem; border-radius: 50px; margin-top: 1rem;
+}
+/* Mobile language buttons */
+.mob-lang-row {
+  display: flex; gap: .6rem; margin-top: .5rem;
+}
+.mob-lang-row button {
+  background: var(--gp); border: 1.5px solid var(--gs);
+  border-radius: 7px; padding: .4rem .9rem;
+  font-size: .85rem; font-weight: 600; color: var(--g);
+  cursor: pointer; font-family: inherit; transition: background .2s;
+}
+.mob-lang-row button.selected { background: var(--g); color: #fff; border-color: var(--g); }
+
+@media (max-width: 768px) {
+  nav { padding: .9rem 4%; position: relative; }
+  .nav-links, .nav-cta, .lang-switcher { display: none; }
+  .logo-text { font-size: .95rem; }
+  .ham { display: flex; }
+}
+</style>
+
+<!-- ── Main navigation ── -->
+<nav id="nav">
+  <a href="https://www.direskenergy.com" class="logo">
+    <img src="logo.webp" alt="Diresk">
+    <div class="logo-text">Diresk <span>Consultation &amp; Guidance</span></div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="https://www.direskenergy.com/#about"   data-i18n="nav_about">About</a></li>
+    <li><a href="https://www.direskenergy.com/blog.html" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="https://www.direskenergy.com/#register" data-i18n="nav_register">Registration</a></li>
+    <li><a href="https://www.direskenergy.com/#contact"  data-i18n="nav_contact">Contact</a></li>
+    <li><a href="https://www.direskenergy.com/#faq"      data-i18n="nav_faq">FAQ</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="https://www.direskenergy.com/#register" class="nav-cta" data-i18n="nav_cta">Book a session</a>
+
+    <!-- Language switcher -->
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn" id="langBtn" aria-label="Switch language">
+        <span id="langLabel">EN</span>
+        <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button onclick="setLang('en')" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button>
+        <button onclick="setLang('fr')" data-lang="fr"><span class="lang-flag">🇫🇷</span> Français</button>
+        <button onclick="setLang('ar')" data-lang="ar"><span class="lang-flag">🇩🇿</span> العربية</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ham" onclick="toggleMenu()" id="ham">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── Mobile slide-in menu ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="ham" onclick="toggleMenu()" style="position:absolute;top:1.2rem;right:4%">
+    <span style="transform:rotate(45deg) translate(5px,5px)"></span>
+    <span style="opacity:0"></span>
+    <span style="transform:rotate(-45deg) translate(5px,-5px)"></span>
+  </div>
+  <a href="https://www.direskenergy.com/#about"    onclick="toggleMenu()" data-i18n="nav_about">About</a>
+  <a href="https://www.direskenergy.com/blog.html" onclick="toggleMenu()" data-i18n="nav_blog">Blog</a>
+  <a href="https://www.direskenergy.com/#register" onclick="toggleMenu()" data-i18n="nav_register">Registration</a>
+  <a href="https://www.direskenergy.com/#contact"  onclick="toggleMenu()" data-i18n="nav_contact">Contact</a>
+  <a href="https://www.direskenergy.com/#faq"      onclick="toggleMenu()" data-i18n="nav_faq">FAQ</a>
+  <a href="https://www.direskenergy.com/#register" onclick="toggleMenu()" class="mob-cta" data-i18n="nav_cta">Book a session</a>
+  <!-- Mobile language row -->
+  <div class="mob-lang-row">
+    <button onclick="setLang('en')" data-lang="en">EN</button>
+    <button onclick="setLang('fr')" data-lang="fr">FR</button>
+    <button onclick="setLang('ar')" data-lang="ar">AR</button>
+  </div>
+</div>
+
+<script>
+/* ── Translations ── */
+var I18N = {
+  en: {
+    nav_about:    'About',
+    nav_blog:     'Blog',
+    nav_register: 'Registration',
+    nav_contact:  'Contact',
+    nav_faq:      'FAQ',
+    nav_cta:      'Book a session'
+  },
+  fr: {
+    nav_about:    'À propos',
+    nav_blog:     'Blog',
+    nav_register: 'Inscription',
+    nav_contact:  'Contact',
+    nav_faq:      'FAQ',
+    nav_cta:      'Réserver une séance'
+  },
+  ar: {
+    nav_about:    'من نحن',
+    nav_blog:     'المدونة',
+    nav_register: 'التسجيل',
+    nav_contact:  'اتصل بنا',
+    nav_faq:      'الأسئلة الشائعة',
+    nav_cta:      'احجز جلسة'
+  }
+};
+
+/* ── Apply a language ── */
+function setLang(lang) {
+  localStorage.setItem('diresklang', lang);
+
+  /* Update <html> lang + dir */
+  document.documentElement.lang = lang;
+  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+  /* Translate all tagged elements in the header */
+  var t = I18N[lang] || I18N['en'];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+
+  /* Update label in desktop button */
+  document.getElementById('langLabel').textContent = lang.toUpperCase();
+
+  /* Highlight selected option — desktop dropdown */
+  document.querySelectorAll('#langDropdown button').forEach(function(btn) {
+    btn.classList.toggle('selected', btn.getAttribute('data-lang') === lang);
+  });
+
+  /* Highlight selected option — mobile row */
+  document.querySelectorAll('.mob-lang-row button').forEach(function(btn) {
+    btn.classList.toggle('selected', btn.getAttribute('data-lang') === lang);
+  });
+
+  /* Close the dropdown if open */
+  document.getElementById('langSwitcher').classList.remove('open');
+}
+
+/* ── Toggle desktop dropdown ── */
+document.getElementById('langBtn').addEventListener('click', function(e) {
+  e.stopPropagation();
+  document.getElementById('langSwitcher').classList.toggle('open');
+});
+
+/* Close when clicking outside */
+document.addEventListener('click', function() {
+  document.getElementById('langSwitcher').classList.remove('open');
+});
+
+/* ── Hamburger ── */
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+/* ── On load: restore saved language (default EN) ── */
+(function() {
+  var saved = localStorage.getItem('diresklang') || 'en';
+  setLang(saved);
+
+  /* Highlight active nav link */
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(function(a) {
+    if (a.href === window.location.href) a.classList.add('active');
+  });
+})();
+</script>
