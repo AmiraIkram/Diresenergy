@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- ══ SEO ══ -->
+  <title>Blog — Solar Energy &amp; Electrical Engineering | Diresk</title>
+  <meta name="description" content="Practical guides and expert articles on solar energy, off-grid systems, PVsyst simulation, and renewable energy careers in Algeria. Written by qualified engineers at Diresk Consultation &amp; Guidance."/>
+  <meta name="keywords" content="solar energy blog Algeria, off-grid solar guide, PVsyst tutorial, renewable energy career Algeria, electrical engineering blog, solar system sizing, Diresk blog"/>
+  <meta name="author" content="Diresk Consultation &amp; Guidance"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://www.direskenergy.com/blog.html"/>
+  <link rel="alternate" hreflang="en" href="https://www.direskenergy.com/blog.html"/>
+  <link rel="alternate" hreflang="fr" href="https://www.direskenergy.com/blog.html"/>
+  <link rel="alternate" hreflang="ar" href="https://www.direskenergy.com/blog.html"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://www.direskenergy.com/blog.html"/>
+  <meta property="og:title"       content="Blog — Solar Energy &amp; Electrical Engineering | Diresk"/>
+  <meta property="og:description" content="Practical guides on off-grid solar sizing, PVsyst, and renewable energy careers in Algeria — written by qualified engineers."/>
+  <meta property="og:image"       content="https://www.direskenergy.com/og-blog.jpg"/>
+  <meta property="og:locale"      content="en_US"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="Blog — Solar Energy &amp; Electrical Engineering | Diresk"/>
+  <meta name="twitter:description" content="Expert articles on solar system sizing, PVsyst, and renewable energy careers in Algeria."/>
+
+  <!-- Schema.org Blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Diresk Blog",
+    "description": "Practical guides on solar energy, PVsyst simulation, and renewable energy careers in Algeria.",
+    "url": "https://www.direskenergy.com/blog.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Diresk Consultation & Guidance",
+      "url": "https://www.direskenergy.com"
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "How to Size an Off-Grid Solar System Step by Step",
+        "url": "https://www.direskenergy.com/article-solar.html",
+        "author": { "@type": "Person", "name": "Amira Amiratte" },
+        "datePublished": "2026-04-05"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "How to Enter the Renewable Energy Sector in Algeria as a Recent Graduate",
+        "url": "https://www.direskenergy.com/article-career.html",
+        "author": { "@type": "Person", "name": "Amira Amiratte" },
+        "datePublished": "2026-04-05"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "PVsyst Beginner's Guide: Simulate Your First Solar Project",
+        "url": "https://www.direskenergy.com/article-pvsyst.html",
+        "author": { "@type": "Person", "name": "Amira Amiratte" },
+        "datePublished": "2026-04-05"
+      }
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ══ Reset & tokens ══ */
+    :root {
+      --green-dark:   #1a3a2a;
+      --green-mid:    #1D5C3E;
+      --green-light:  #e8f2ec;
+      --green-accent: #2d7a52;
+      --amber:        #c8861a;
+      --amber-light:  #fdf6e3;
+      --blue-light:   #e8f3fb;
+      --blue-mid:     #2176ae;
+      --white:        #ffffff;
+      --gray-bg:      #f7f8f6;
+      --gray-mid:     #e2e8e4;
+      --text-primary: #1a2420;
+      --text-muted:   #6b7c74;
+      --radius-card:  16px;
+      --shadow-card:  0 2px 16px rgba(26,58,42,.07);
+      --shadow-hover: 0 14px 48px rgba(26,58,42,.13);
+      --font-display: 'Bricolage Grotesque', sans-serif;
+      --font-body:    'Lora', serif;
+      --transition:   .25s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--text-primary);
+      line-height: 1.75;
+      padding-top: 70px; /* fixed nav height */
+    }
+
+    /* ══ Hero section ══ */
+    .blog-hero {
+      background: var(--green-dark);
+      padding: 72px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* subtle radial glow */
+    .blog-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 90% at 50% 110%, #2d7a52 0%, transparent 65%);
+      pointer-events: none;
+    }
+    /* dot grid decoration */
+    .blog-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 22px 22px;
+      pointer-events: none;
+    }
+    .blog-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.85);
+      font-family: var(--font-display); font-size: 11px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero-pill::before {
+      content: '';
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #4aab78;
+    }
+
+    .blog-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700; line-height: 1.12;
+      color: var(--white); margin-bottom: 16px;
+      letter-spacing: -.02em;
+    }
+    .blog-hero h1 em {
+      font-style: italic;
+      color: #4aab78;
+      font-family: var(--font-body);
+    }
+    .blog-hero p {
+      font-size: 1rem;
+      color: rgba(255,255,255,.6);
+      max-width: 480px;
+      margin: 0 auto;
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ══ Article count strip ══ */
+    .blog-meta-strip {
+      background: var(--gray-bg);
+      border-bottom: 1px solid var(--gray-mid);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .blog-meta-strip span {
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .blog-meta-strip strong { color: var(--green-dark); }
+
+    /* ══ Grid ══ */
+    .blog-grid-wrap {
+      max-width: 1120px;
+      margin: 56px auto 88px;
+      padding: 0 24px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ══ Card ══ */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition), box-shadow var(--transition);
+      /* stagger-in animation */
+      opacity: 0;
+      animation: fadeUp .55s ease forwards;
+    }
+    .card:nth-child(1) { animation-delay: .05s; }
+    .card:nth-child(2) { animation-delay: .15s; }
+    .card:nth-child(3) { animation-delay: .25s; }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ── Card image banner ── */
+    .card-banner {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    /* Green banner — solar */
+    .card-banner.green {
+      background: linear-gradient(145deg, #d4eddf 0%, #b6dfc5 100%);
+    }
+    /* Amber/yellow banner — career */
+    .card-banner.amber {
+      background: linear-gradient(145deg, #fef5db 0%, #fde8ad 100%);
+    }
+    /* Blue banner — PVsyst */
+    .card-banner.blue {
+      background: linear-gradient(145deg, #daeef9 0%, #b8ddf4 100%);
+    }
+
+    /* icon inside banner */
+    .card-banner-icon {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    }
+    .green .card-banner-icon  { background: #ffffff; }
+    .amber .card-banner-icon  { background: #ffffff; }
+    .blue  .card-banner-icon  { background: #ffffff; }
+
+    /* decorative circles */
+    .card-banner::before,
+    .card-banner::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: .25;
+    }
+    .card-banner.green::before  { width: 120px; height: 120px; background: #2d7a52; top: -30px; right: -30px; }
+    .card-banner.green::after   { width: 70px;  height: 70px;  background: #2d7a52; bottom: -15px; left: 24px; }
+    .card-banner.amber::before  { width: 120px; height: 120px; background: #c8861a; top: -30px; right: -30px; }
+    .card-banner.amber::after   { width: 70px;  height: 70px;  background: #c8861a; bottom: -15px; left: 24px; }
+    .card-banner.blue::before   { width: 120px; height: 120px; background: #2176ae; top: -30px; right: -30px; }
+    .card-banner.blue::after    { width: 70px;  height: 70px;  background: #2176ae; bottom: -15px; left: 24px; }
+
+    /* ── Card body ── */
+    .card-body {
+      padding: 26px 26px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* category pill */
+    .card-category {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-family: var(--font-display);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 4px 11px; border-radius: 100px;
+      width: fit-content;
+    }
+    .card-category.cat-solar  { background: var(--green-light); color: var(--green-mid); }
+    .card-category.cat-career { background: var(--amber-light); color: var(--amber); }
+    .card-category.cat-soft   { background: var(--blue-light);  color: var(--blue-mid); }
+    .card-category::before {
+      content: '';
+      width: 5px; height: 5px; border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* title */
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 17px; font-weight: 700;
+      color: var(--green-dark); line-height: 1.35;
+    }
+
+    /* description */
+    .card-desc {
+      font-family: var(--font-display);
+      font-size: 14px; color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    /* ── Card footer ── */
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--gray-mid);
+      margin-top: 4px;
+    }
+    .card-meta {
+      font-family: var(--font-display);
+      font-size: 12px; color: var(--text-muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .card-meta::before {
+      content: '';
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--green-dark);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z'/%3E%3C/svg%3E");
+      background-size: 60%;
+      background-repeat: no-repeat;
+      background-position: center;
+      flex-shrink: 0;
+    }
+    .card-read-link {
+      font-family: var(--font-display);
+      font-size: 13px; font-weight: 600;
+      color: var(--green-accent);
+      display: inline-flex; align-items: center; gap: 5px;
+      text-decoration: none;
+      transition: gap var(--transition), color var(--transition);
+    }
+    .card-read-link:hover { gap: 9px; color: var(--green-dark); }
+    .card-read-link svg { flex-shrink: 0; transition: transform var(--transition); }
+    .card-read-link:hover svg { transform: translateX(2px); }
+
+    /* ══ CTA banner ══ */
+    .cta-wrap {
+      max-width: 1120px;
+      margin: 0 auto 88px;
+      padding: 0 24px;
+    }
+    .cta-inner {
+      background: var(--green-dark);
+      border-radius: 20px;
+      padding: 52px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-inner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 120% at 100% 50%, #2d7a52 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-text { position: relative; z-index: 1; }
+    .cta-text h2 {
+      font-family: var(--font-display); font-size: clamp(20px, 3vw, 26px);
+      font-weight: 700; color: var(--white); margin-bottom: 8px; line-height: 1.2;
+    }
+    .cta-text p {
+      font-family: var(--font-display); font-size: 15px;
+      color: rgba(255,255,255,.65); line-height: 1.55; max-width: 460px;
+    }
+    .cta-btn {
+      position: relative; z-index: 1;
+      background: var(--white); color: var(--green-dark);
+      font-family: var(--font-display); font-size: 15px; font-weight: 700;
+      padding: 15px 30px; border-radius: 10px;
+      text-decoration: none; white-space: nowrap;
+      transition: background var(--transition), transform var(--transition);
+      display: inline-flex; align-items: center; gap: 8px;
+      flex-shrink: 0;
+    }
+    .cta-btn:hover { background: var(--green-light); transform: translateY(-2px); }
+    .cta-btn svg { flex-shrink: 0; }
+
+    /* ══ Animation ══ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══ Responsive ══ */
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; gap: 20px; }
+      .blog-grid-wrap { margin: 36px auto 64px; }
+      .blog-hero { padding: 52px 20px 60px; }
+      .cta-inner { padding: 36px 28px; flex-direction: column; align-items: flex-start; }
+      .cta-wrap  { margin-bottom: 64px; }
+      .blog-meta-strip { padding: 12px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ① Header -->
+<div id="header-placeholder"></div>
+
+<!-- ══ Hero ══ -->
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="hero-pill">Diresk Knowledge Base</div>
+    <h1>Engineering insights, <em>explained clearly</em></h1>
+    <p>Practical guides on solar system design, PVsyst simulation, and renewable energy careers — written by working engineers, not marketers.</p>
+  </div>
+</section>
+
+<!-- ── Meta strip ── -->
+<div class="blog-meta-strip">
+  <span><strong>3 articles</strong> published</span>
+  <span>Solar Energy · Career · Software</span>
+</div>
+
+<!-- ══ Card grid ══ -->
+<div class="blog-grid-wrap">
+  <div class="blog-grid">
+
+    <!-- ─ Card 1 : Solar sizing ─ -->
+    <a class="card" href="article-solar.html">
+      <div class="card-banner green">
+        <div class="card-banner-icon">☀️</div>
+      </div>
+      <div class="card-body">
+        <span class="card-category cat-solar">Solar Energy</span>
+        <h2 class="card-title">How to Size an Off-Grid Solar System Step by Step</h2>
+        <p class="card-desc">Practical guide covering panel sizing, battery capacity and inverter selection for a residential installation — with real formulas and worked examples.</p>
+        <div class="card-foot">
+          <span class="card-meta">Amira Amiratte &nbsp;·&nbsp; 11 min</span>
+          <span class="card-read-link">
+            Read the article
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ─ Card 2 : Career ─ -->
+    <a class="card" href="article-career.html">
+      <div class="card-banner amber">
+        <div class="card-banner-icon">🎓</div>
+      </div>
+      <div class="card-body">
+        <span class="card-category cat-career">Career</span>
+        <h2 class="card-title">How to Enter the Renewable Energy Sector in Algeria as a Recent Graduate</h2>
+        <p class="card-desc">Practical advice on important certifications, companies to target, and how to build a strong technical profile that stands out in the Algerian job market.</p>
+        <div class="card-foot">
+          <span class="card-meta">Amira Amiratte &nbsp;·&nbsp; 9 min</span>
+          <span class="card-read-link">
+            Read the article
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ─ Card 3 : PVsyst ─ -->
+    <a class="card" href="article-pvsyst.html">
+      <div class="card-banner blue">
+        <div class="card-banner-icon">💻</div>
+      </div>
+      <div class="card-body">
+        <span class="card-category cat-soft">Software</span>
+        <h2 class="card-title">PVsyst Beginner's Guide: Simulate Your First Solar Project</h2>
+        <p class="card-desc">A course on the fundamentals of PVsyst software for engineers designing their first grid-connected solar installation — from location data to reading the final report.</p>
+        <div class="card-foot">
+          <span class="card-meta">Amira Amiratte &nbsp;·&nbsp; 8 min</span>
+          <span class="card-read-link">
+            Read the article
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ══ CTA banner ══ -->
+<div class="cta-wrap">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2>Need personalised guidance on your project?</h2>
+      <p>Our engineers work with you one-on-one — system sizing, PVsyst review, career planning, or FYP support. Available online for Algeria, Saudi Arabia and the UAE.</p>
+    </div>
+    <a class="cta-btn" href="registration.html">
+      Book a session
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<!-- ② Footer -->
+<div id="footer-placeholder"></div>
+
+<!-- Component loader -->
+<script>
+  async function loadComponent(id, file) {
+    try {
+      const res  = await fetch(file);
+      if (!res.ok) throw new Error('Cannot load ' + file);
+      const html = await res.text();
+      document.getElementById(id).innerHTML = html;
+      document.getElementById(id).querySelectorAll('script').forEach(function(s) {
+        var n = document.createElement('script');
+        n.textContent = s.textContent;
+        s.replaceWith(n);
+      });
+    } catch(e) { console.error(e); }
+  }
+  Promise.all([
+    loadComponent('header-placeholder', 'header.html'),
+    loadComponent('footer-placeholder', 'footer.html')
+  ]);
+</script>
+
+</body>
+</html>
